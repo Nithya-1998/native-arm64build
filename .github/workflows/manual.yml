@@ -37,7 +37,7 @@ jobs:
         uses: crazy-max/ghaction-upx@v1.3.3
         with:
           version: latest
-          file: target/demo-cli.exe
+          file: target/secretdemo-quarkus-1.0.0-SNAPSHOT-runner.exe
           args: '-7'
       - uses: actions/upload-artifact@v2
         with:
@@ -60,7 +60,7 @@ jobs:
       - name: Run UPX
         uses: svenstaro/upx-action@v2
         with:
-          file: target/demo-cli
+          file: target/secretdemo-quarkus-1.0.0-SNAPSHOT-runner
           args: '-7'
       - name: Upload artifacts
         run: mkdir staging && cp target/demo-cli staging/demo-cli-mac-amd64
@@ -85,7 +85,7 @@ jobs:
         uses: crazy-max/ghaction-upx@v1.3.3
         with:
           version: latest
-          file: target/demo-cli
+          file: target/secretdemo-quarkus-1.0.0-SNAPSHOT-runner
           args: '-7'
       - name: Upload artifacts
         run: mkdir staging && cp target/demo-cli staging/demo-cli-linux-amd64
