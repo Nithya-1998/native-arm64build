@@ -46,6 +46,3 @@ jobs:
       - name: Install native-image component
         run: |
           ${{ matrix.gu-binary }} install native-image
-          
-      - name: Build with Maven
-        run: mvn -DskipTests -B clean package native-image:native-image
