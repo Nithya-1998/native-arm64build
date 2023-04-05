@@ -41,41 +41,41 @@ jobs:
           # Java version, optional, defaults to 'java8'. Available options are 'java8' and 'java11'.
           java: 'java11'
           # Architecture flag, optional, defaults to 'amd64'. Available options are 'amd64' and 'aarch64'. Later is available only for linux runners.
-          arch: 'amd64'
+          arch: 'aarch64'
 
       - name: Install native-image component
         run: |
           ${{ matrix.gu-binary }} install native-image
           
-  buildOnWindows:
-    runs-on: windows-latest
+#   buildOnWindows:
+#     runs-on: windows-latest
 
-    steps:
-      - uses: actions/checkout@v2
-      - uses: ilammy/msvc-dev-cmd@v1.5.0
-      - uses: microsoft/setup-msbuild@v1
-      - uses: ayltai/setup-graalvm@v1
-        with:
-          java-version: 11
-          graalvm-version: 21.1.0
-          native-image: true
-      - name: Echo Java version
-        run: java -version
-        shell: powershell
-      - name: Build with Maven
-        run: mvn -DskipTests -B clean package native-image:native-image --file pom.xml
-        shell: powershell
-      - name: Run UPX
-        uses: crazy-max/ghaction-upx@v1.3.3
-        with:
-          version: latest
-          file: target/secretdemo-quarkus-1.0.0-SNAPSHOT-runner.exe
-          args: '-7'
-      - uses: actions/upload-artifact@v2
-        with:
-          if-no-files-found: warn
-          name: package
-          path: target/*.exe
+#     steps:
+#       - uses: actions/checkout@v2
+#       - uses: ilammy/msvc-dev-cmd@v1.5.0
+#       - uses: microsoft/setup-msbuild@v1
+#       - uses: ayltai/setup-graalvm@v1
+#         with:
+#           java-version: 11
+#           graalvm-version: 21.1.0
+#           native-image: true
+#       - name: Echo Java version
+#         run: java -version
+#         shell: powershell
+#       - name: Build with Maven
+#         run: mvn -DskipTests -B clean package native-image:native-image --file pom.xml
+#         shell: powershell
+#       - name: Run UPX
+#         uses: crazy-max/ghaction-upx@v1.3.3
+#         with:
+#           version: latest
+#           file: target/secretdemo-quarkus-1.0.0-SNAPSHOT-runner.exe
+#           args: '-7'
+#       - uses: actions/upload-artifact@v2
+#         with:
+#           if-no-files-found: warn
+#           name: package
+#           path: target/*.exe
 
 #   buildOnMac:
 #     runs-on: macos-latest
@@ -101,14 +101,14 @@ jobs:
 #           name: package
 #           path: staging
 
-  buildOnLinux:
-    runs-on: ubuntu-latest
-    name: Build native Quarkus app
-    steps:
-      - name: Checkout the code
-        uses: actions/checkout@master
-      - name: Build native executable and upload it as an artifact
-        uses: maxday/quarkus-native-build-docker-action@1
-        with:
-         outputName: secretdemo-quarkus-1.0.0-SNAPSHOT-runner
-         dockerfilePath: Dockerfile
+#   buildOnLinux:
+#     runs-on: ubuntu-latest
+#     name: Build native Quarkus app
+#     steps:
+#       - name: Checkout the code
+#         uses: actions/checkout@master
+#       - name: Build native executable and upload it as an artifact
+#         uses: maxday/quarkus-native-build-docker-action@1
+#         with:
+#          outputName: secretdemo-quarkus-1.0.0-SNAPSHOT-runner
+#          dockerfilePath: Dockerfile
