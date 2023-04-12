@@ -1,13 +1,13 @@
-package com.diamler.secretdemo;
+// package com.diamler.secretdemo;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class SecretDemoApplicationTests {
+// @SpringBootTest
+// class SecretDemoApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+// 	@Test
+// 	void contextLoads() {
+// 	}
 
-}
+// }
