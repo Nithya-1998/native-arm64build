@@ -45,5 +45,5 @@ jobs:
         with:
           context: .
           push: true
-          file: ./Dockerfile.native
+          file: src/main/docker/Dockerfile.native
           tags: nithyathulasiraman/graalvm-native-build-app:latest
