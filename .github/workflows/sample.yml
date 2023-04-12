@@ -1,4 +1,4 @@
-name: GraalVM Native Image builds
+name: Sample native image build
 on:
   workflow_dispatch:
     # Inputs the workflow accepts.
