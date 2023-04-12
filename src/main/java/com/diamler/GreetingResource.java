@@ -10,8 +10,6 @@ import javax.ws.rs.core.MediaType;
 @Path("/hello")
 public class GreetingResource {
 
-    @ConfigProperty(name = "greeting.suffix", defaultValue="!")
-    String suffix;
 
     @ConfigProperty(name = "count")
     private int count;
