@@ -14,7 +14,7 @@ jobs:
       - name: Set up GraalVM Native Image toolchain
         uses: helpermethod/graalvm-native-image-toolchain@0.0.2
         with:
-          graalvm-version: 21.2.0
+          graalvm-version: 22.3.0
           java-version: 11
 #       - uses: graalvm/setup-graalvm@v1 
 #         with:
