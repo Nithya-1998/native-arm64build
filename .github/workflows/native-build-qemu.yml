@@ -51,6 +51,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
+          platforms: linux/arm64
           push: true
           file: src/main/docker/Dockerfile.native
           tags: nithyathulasiraman/graalvm-native-build-app:latest
