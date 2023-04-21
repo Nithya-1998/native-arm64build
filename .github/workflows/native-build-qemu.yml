@@ -29,9 +29,10 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: 'Build'  
-        run: >
-          mvn -B --file pom.xml verify -Pnative
-          -Dquarkus.native.additional-build-args=-H:-UseContainerSupport
+        run: |
+          mvn -B --file pom.xml verify -Pnative -Dquarkus.native.additional-build-args=-H:-UseContainerSupport
+          cd ./target
+          ls
       
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
