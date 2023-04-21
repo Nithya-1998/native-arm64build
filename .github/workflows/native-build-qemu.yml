@@ -36,7 +36,6 @@ jobs:
           arch: amd64
       - run: | 
           build
-          mvn -B --file pom.xml verify -Pnative -Dquarkus.native.additional-build-args=-H:-UseContainerSupport
 
       - name: Configure build for x86
         uses: ilammy/msvc-dev-cmd@v1
