@@ -37,6 +37,12 @@ jobs:
         uses: TheMrMilchmann/setup-msvc-dev@v2
         with:
           arch: x64
+          
+      - uses: ilammy/msvc-dev-cmd@v1
+      - name: Build something requiring CL.EXE
+        run: |
+          cmake -G "NMake Makefiles" .
+          nmake
 
       - name: 'Build'  
         run: |
