@@ -31,7 +31,6 @@ jobs:
 
       - name: 'Build'  
         run: |
-          call "c:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat"
           mvn clean package -P native -Dskip.ui=true -DskipTests=true -DskipITs -Dquarkus.native.container-build=false -Dmaven.test.failure.ignore=true -B -U -DskipITs
           cd ./target
           ls
