@@ -7,7 +7,7 @@ on:
 
 jobs:
   docker:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: 'Check out repository' 
         uses: actions/checkout@v3
@@ -28,20 +28,17 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-          
-      - name: Setup MSBuild.exe
-        uses: microsoft/setup-msbuild@v1.1.3
-          
+                    
       - name: 'Build'  
         run: |
           mvn -B --file pom.xml verify -Pnative
           cd ./target
           ls
       
-#       - name: Set up QEMU
-#         uses: docker/setup-qemu-action@v2
-#         with:
-#           platforms: 'arm64,arm'
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+        with:
+          platforms: 'arm64,arm'
       
       - name: Set up Docker Buildx 
         uses: docker/setup-buildx-action@v2
@@ -56,7 +53,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-        #  platforms: linux/arm64
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
           file: src/main/docker/Dockerfile.native
           tags: nithyathulasiraman/graalvm-native-build-app:latest
